@@ -1,4 +1,4 @@
-# In your dags/hello_world_dag.py file
+# In your dags/hello_world_dag.py file (replace the old content)
 
 from __future__ import annotations
 
@@ -9,8 +9,18 @@ from airflow.decorators import dag, task
 
 @task
 def hello_task():
-    """This task prints the first hello world message."""
-    print("Hello World, David is gonna be self employed!")
+    """This task prints the NEW hello world message."""
+    # 1. This is your implementation change
+    print("Hello World, David has MASTERED Airflow versioning!")
+
+
+@task
+def dummy_structural_task():
+    """
+    2. This is a structural change. The existence of this new task
+       will create a new DAG Version in the UI.
+    """
+    pass
 
 
 @dag(
@@ -24,11 +34,12 @@ def hello_world_dag():
     """
     ### Hello World DAG
     A simple DAG to demonstrate execution and versioning.
-    This is the first version of the DAG.
+    This is the second version of the DAG, with a structural change.
     """
-    # This calls your task function to create an instance of the task in the DAG
+    # Call both tasks to include them in the DAG
     hello_task()
+    dummy_structural_task()
 
 
-# This final line instantiates the DAG and makes it available to Airflow
+# This final line instantiates the DAG
 hello_world_dag()
