@@ -4,7 +4,7 @@ from datetime import datetime
 
 
 def hello_world():
-    print("Hello World")
+    print("Hello World, David is gonna be rich")
 
 
 default_args = {
