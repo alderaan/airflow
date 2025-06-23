@@ -1,6 +1,5 @@
-#
-# This is the corrected, modern version of your DAG
-#
+# In your dags/hello_world_dag.py file
+
 from __future__ import annotations
 
 import pendulum
@@ -9,28 +8,27 @@ from airflow.decorators import dag, task
 
 
 @task
-def hello_world():
-    """This is the task implementation."""
-    print("Hello World, David is gonna be super successful. Really. ")
+def hello_task():
+    """This task prints the first hello world message."""
+    print("Hello World, David is gonna be super successful!")
 
 
 @dag(
     dag_id="hello_world",
     start_date=pendulum.datetime(2024, 1, 1, tz="UTC"),
-    description="A simple Hello World DAG",
     schedule=None,
     catchup=False,
     tags=["example"],
-    version="1.1.0",  # <-- The version parameter now works correctly here
 )
 def hello_world_dag():
     """
     ### Hello World DAG
-    This DAG prints a hello world message.
+    A simple DAG to demonstrate execution and versioning.
+    This is the first version of the DAG.
     """
-    # This calls your task function to create an instance of the task
-    hello_world()
+    # This calls your task function to create an instance of the task in the DAG
+    hello_task()
 
 
-# This final line instantiates the DAG
+# This final line instantiates the DAG and makes it available to Airflow
 hello_world_dag()
