@@ -15,7 +15,6 @@ default_args = {
 
 dag = DAG(
     "hello_world",
-    version="1.1",
     default_args=default_args,
     description="A simple Hello World DAG",
     schedule=None,  # Only run manually
