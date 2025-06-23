@@ -15,7 +15,7 @@ dag = DAG(
     "hello_world",
     default_args=default_args,
     description="A simple Hello World DAG",
-    schedule_interval=None,  # Only run manually
+    schedule=None,  # Only run manually
     catchup=False,
     tags=["example"],
 )
