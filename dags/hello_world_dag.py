@@ -18,6 +18,7 @@ dag = DAG(
     schedule=None,  # Only run manually
     catchup=False,
     tags=["example"],
+    version="1.1.0",
 )
 
 hello_task = PythonOperator(
